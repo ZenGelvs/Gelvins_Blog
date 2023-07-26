@@ -19,7 +19,7 @@
     <body >
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
         <div> 
-        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Create A new post</h2><br>
+        <h1 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Create A new post</h1><br>
         <form action="/create-post" method="POST">
             @csrf
             <input type="text" name="title" placeholder="Your Title"><br><br>
@@ -29,7 +29,7 @@
         </form>
             <form action='/view-post' method='POST'> 
             @csrf
-            <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> View Post </button>
+            <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> View Posts </button>
             </form>
     </div> 
 </div> 

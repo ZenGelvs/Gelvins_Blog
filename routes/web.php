@@ -16,7 +16,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('/addpost');
+    return view('/addposts');
 });
 
 //Redirect to createpost view and Create an actual Post
@@ -28,3 +28,11 @@ Route::post('/view-post', [PostController::Class, 'index']);
 //From Index return to create post
 Route::get('/createpost-from-viewpost', [PostController::Class, 'return']);
 
+//Editpost view from viewpost view
+Route::get('/edit-post/{posts}', [PostController::Class, 'editPostScreen']);
+
+//Actually Edit Post
+Route::put('/edit-post/{posts}', [PostController::Class, 'editPostReal']);
+
+//Delete Post
+Route::delete('/delete-post/{posts}', [PostController::Class, 'deletePost']);
