@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -15,7 +16,15 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/addpost');
 });
 
+//Redirect to createpost view and Create an actual Post
 Route::post('/create-post',[PostController::class, 'createpost']);
+
+//Redirect to view posts
+Route::post('/view-post', [PostController::Class, 'index']);
+
+//From Index return to create post
+Route::get('/createpost-from-viewpost', [PostController::Class, 'return']);
+
