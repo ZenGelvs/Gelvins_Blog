@@ -23,22 +23,6 @@
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"  >
             
             <div>
-<<<<<<< Updated upstream
-            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">My Posts</h2>
-        
-                <div  style= "padding:10px; margin:10px" > 
-                    <h3> All posts  </h3>
-
-                   
-
-                    @foreach($posts as $posts)
-
-                        <div style="background-color: gray; padding: 10px; margin: 10px;" class="dark:text-white" > 
-                            
-                            <h3>{{$posts['Title']}}</h3>
-                            {{$posts['Body']}}
-
-=======
                 <div>
                     <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">My Posts</h2>
 
@@ -56,27 +40,13 @@
                         <div style="background-color: gray; padding: 10px; margin: 10px; font-size: 50px;" class="dark:text-white" > 
                             <h3>{{$posts['Title']}}</h3>
                             {{$posts['Body']}}
->>>>>>> Stashed changes
                         </div>
 
                     @endforeach
 
-<<<<<<< Updated upstream
-                   
-                        
-                </div>
-
-                <form action="back" method="POST" >
-                    @csrf
-                    <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" > View Posts </button>
-                </form>
-
-            </div>           
-=======
                 </div>
 
             </div>  
->>>>>>> Stashed changes
         
         </div> 
     </body>
