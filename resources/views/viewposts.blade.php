@@ -43,7 +43,8 @@
                             {{$posts['Body']}}
                             </div>
 
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" style="font-size:20px;"><a href="/edit-post/{{$posts->id}}">Edit</a></p>
+                            <p class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" style="font-size:20px;">
+                            <a href="/edit-post/{{$posts->id}}">Edit</a></p>
 
                             <form action="/delete-post/{{$posts->id}}" method="POST"> 
                             @csrf
