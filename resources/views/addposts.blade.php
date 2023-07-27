@@ -20,14 +20,14 @@
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
         <div> 
         <h1 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Create A new post</h1><br>
-        <form action="/create-post" method="POST">
+        <form action="{{route('POSTS.store')}}" method="POST">
             @csrf
             <input type="text" name="title" placeholder="Your Title"><br><br>
             <textarea name="body" placeholder="Write your post here:"></textarea><br><br>
             <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> Post </button>
             
         </form>
-            <form action='/view-post' method='POST'> 
+            <form action='{{route('POSTS.index')}}' method='POST'> 
             @csrf
             <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> View Posts </button>
             </form>

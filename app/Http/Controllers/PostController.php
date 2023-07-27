@@ -19,25 +19,25 @@ class PostController extends Controller
     //show index view and contents of posts 
     public function index(){
         $posts = Post::all();
-        return view ('posts.viewposts', ['posts' => $posts]);
+        return view ('viewposts', ['posts' => $posts]);
     }
 
     //return to addpost view
     public function return(){
-        return view ('posts.addposts');
+        return view ('addposts');
     }
 
     //edit function that retries data from db
     public function edit(Post $posts){
-        return view('posts.editposts', ['posts'=>$posts]);
+        return view('editposts', ['posts'=>$posts]);
     }
 
-    public function update(Post $posts, Request $request){
+    public function update(Post $posts, StorePostRequest $request){
         $incomingFields = $request->validated();
 
         $posts->update($incomingFields);
 
-        return view ('posts.addposts');
+        return view ('addposts');
     }
 
     public function destroy(Post $posts){

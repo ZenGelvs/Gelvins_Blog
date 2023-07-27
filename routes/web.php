@@ -4,62 +4,54 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
-Route::group(['prefix' => 'posts', 'as' => 'posts.'], function (){
 
-
-    
+Route::get('/', function () {
+    return view('/addposts');});
 
 
 //Resource Controller
 Route::resource('posts', PostController::class);
 
-Route::controller(PostController::class)->group(function(){
+Route::group(['prefix'=> 'POSTS', 'as' => 'POSTS.'], function(){
 
-        Route::get('/', function () {
-        return view('/addposts');});
+    Route::post('/create-post', [PostController::class, 'store']) ->name('store');
 
-        Route::name('Posts.')->group(function () {
+    Route::post('/view-post', [PostController::class, 'index']) ->name('index');
 
-        //Redirect to createpost view and Create an actual Post 
-        Route::post('/create-post','createpost') ->name('createpost');
+    Route::get('/createpost-from-viewpost', [PostController::class, 'return']) ->name('return');
 
-        //Redirect to view posts 
-        Route::post('/view-post','index') ->name('viewpost');
+    Route::get('edit-post/{posts}', [PostController::class, 'edit']) ->name('edit');
 
-        //From Index return to create post 
-        Route::get('/createpost-from-viewpost','return') ->name('return');
+    Route::put('edit-post/{posts}', [PostController::class, 'update']) ->name('update');
 
-        //Editpost view from viewpost view
-        Route::get('edit-post/{posts}','editPostScreen') ->name('editPostScreen');
-
-        //Actually Edit Post
-        Route::put('edit-post/{posts}','editPostReal') ->name('editPostReal');
-
-        //Delete Post
-        Route::delete('/delete-post/{posts}','deletePost') ->name('deletePost');
-
-        });
-    });
+    Route::delete('/delete-post/{posts}', [PostController::class, 'destroy']) ->name('destryo');
 
 });
 
 
+/*Route::controller(PostController::class)->group(function(){
+
+        //Redirect to createpost view and Create an actual Post 
+        Route::post('/create-post','store');
+
+        //Redirect to view posts 
+        Route::post('/view-post','index');
+
+        //From Index return to create post 
+        Route::get('/createpost-from-viewpost','return');
+
+        //Editpost view from viewpost view
+        Route::get('edit-post/{posts}','edit');
+
+        //Actually Edit Post
+        Route::put('edit-post/{posts}','update');
+
+        //Delete Post
+        Route::delete('/delete-post/{posts}','destroy');
+
+       
+    }); */
 
 
-//Redirect to createpost view and Create an actual Post
-//Route::post('/create-post',[PostController::class, 'createpost']);
 
-//Redirect to view posts
-//Route::post('/view-post', [PostController::Class, 'index']);
 
-//From Index return to create post
-//Route::get('/createpost-from-viewpost', [PostController::Class, 'return']);
-
-//Editpost view from viewpost view
-//Route::get('/edit-post/{posts}', [PostController::Class, 'editPostScreen']);
-
-//Actually Edit Post
-//Route::put('/edit-post/{posts}', [PostController::Class, 'editPostReal']);
-
-//Delete Post
-//Route::delete('/delete-post/{posts}', [PostController::Class, 'deletePost']);
