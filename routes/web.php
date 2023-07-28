@@ -28,10 +28,3 @@ Route::group(['prefix'=> 'Posts.', 'as' => 'POSTS.'], function(){
     Route::delete('/delete-post/{posts}', [PostController::class, 'destroy']) ->name('destroy');
 
 });
-
-
-
-
-
-
-
