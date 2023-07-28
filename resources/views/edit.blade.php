@@ -15,5 +15,6 @@
                 @csrf
             <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> Back </button>
             </form>
+
 </div> 
 @stop
