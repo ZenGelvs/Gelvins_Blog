@@ -1,12 +1,12 @@
-@extends('layout.master')  
-@section('Viewpost')
+@extends('layout.index')  
+@section('Content')
 <div> 
     
     <div>
         <div>
             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">My Posts</h2>
 
-            <form action="{{route('POSTS.return')}}" method="GET" >
+            <form action="{{route('posts.return')}}" method="GET" >
                 @csrf
                 <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" > Create Posts </button>
                 </form>
@@ -25,9 +25,9 @@
                     </div>
 
                     <p class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" style="font-size:20px;">
-                        <a href="{{route('POSTS.edit', $posts->id)}}">Edit</a></p>
+                        <a href="{{route('posts.edit', $posts->id)}}">Edit</a></p>
 
-                    <form action="{{route('POSTS.destroy', $posts->id)}}" method="POST"> 
+                    <form action="{{route('posts.destroy', $posts->id)}}" method="POST"> 
                     @csrf
                     @method('DELETE')
                     <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" style="font-size:20px;">Delete</button>
@@ -41,4 +41,4 @@
 
     </div>  
 </div> 
-@stop
+@endsection

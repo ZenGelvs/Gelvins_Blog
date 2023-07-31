@@ -19,22 +19,19 @@ Route::get('/', function () {
     return view('/posts');});
 
 
-//Resource Controller
-Route::resource('posts', PostController::class);
-
 //Routegroup
-Route::group(['prefix'=> 'Posts.', 'as' => 'POSTS.'], function(){
+Route::group(['prefix'=> 'posts.', 'as' => 'posts.'], function(){
 
-    Route::post('/create-post', [PostController::class, 'store']) ->name('store');
+    Route::post('/create', [PostController::class, 'store']) ->name('store');
 
-    Route::post('/view-post', [PostController::class, 'index']) ->name('index');
+    Route::post('/view', [PostController::class, 'index']) ->name('index');
 
     Route::get('/return', [PostController::class, 'return']) ->name('return');
 
-    Route::get('edit-post/{posts}', [PostController::class, 'edit']) ->name('edit');
+    Route::get('edit/{posts}', [PostController::class, 'edit']) ->name('edit');
 
-    Route::put('edit-post/{posts}', [PostController::class, 'update']) ->name('update');
+    Route::put('edit/{posts}', [PostController::class, 'update']) ->name('update');
 
-    Route::delete('/delete-post/{posts}', [PostController::class, 'destroy']) ->name('destroy');
+    Route::delete('/delete/{posts}', [PostController::class, 'destroy']) ->name('destroy');
 
 });
