@@ -22,15 +22,15 @@ Route::get('/', function () {
 //Routegroup
 Route::group(['prefix'=> 'posts.', 'as' => 'posts.'], function(){
 
-    Route::post('/create', [PostController::class, 'store']) ->name('store');
+    Route::post('store/', [PostController::class, 'store']) ->name('store');
 
-    Route::post('/view', [PostController::class, 'index']) ->name('index');
+    Route::get('view/', [PostController::class, 'index']) ->name('index');
 
     Route::get('/return', [PostController::class, 'return']) ->name('return');
 
     Route::get('edit/{posts}', [PostController::class, 'edit']) ->name('edit');
 
-    Route::put('update/{posts}', [PostController::class, 'update']) ->name('update');
+    Route::put('update', [PostController::class, 'update']) ->name('update');
 
     Route::delete('/delete/{posts}', [PostController::class, 'destroy']) ->name('destroy');
 

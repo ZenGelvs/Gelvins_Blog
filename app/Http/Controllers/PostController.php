@@ -13,7 +13,7 @@ class PostController extends Controller
         
         $data = $request->validated();
         Post::create($data);
-       return redirect ('/');
+       return redirect ('/posts./view');
     }
 
     //show index view and contents of posts 
@@ -30,14 +30,14 @@ class PostController extends Controller
     //delete function
     public function destroy(Post $posts){
     $posts->delete();
-    return view('posts');
+    return redirect('/posts./view');
     }
 
-
+    //update function
     public function update(Post $posts, StoreRequest $request){
         $data = $request->validated();
         $posts->update($data);
-        return view ('posts');
+        return redirect ('/posts./view');
     }
 
     

@@ -6,11 +6,14 @@
         <div>
         <h1 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Create a New Post</h1><br>
         <form action="{{route('posts.store')}}" method="POST">
+            
         @csrf
         <input type="text" name="title" placeholder="Your Title"><br><br>
         <textarea name="body" rows="8" cols="50" placeholder="Write your post here:"></textarea><br><br>
-        <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> Post </button>
-        
+              
+        <button href="" class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> Post </button> <br>
+            
+
         </form>
         </div>
 
