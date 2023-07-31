@@ -22,10 +22,7 @@ class PostController extends Controller
         return view ('view', ['posts' => $posts]);
     }
 
-    //return to addpost view
-    public function return(){
-        return view ('posts');
-    }
+
 
     //edit function that retries data from db
     public function edit(Post $posts){
