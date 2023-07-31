@@ -30,7 +30,7 @@ Route::group(['prefix'=> 'posts.', 'as' => 'posts.'], function(){
 
     Route::get('edit/{posts}', [PostController::class, 'edit']) ->name('edit');
 
-    Route::put('edit/{posts}', [PostController::class, 'update']) ->name('update');
+    Route::put('update/{posts}', [PostController::class, 'update']) ->name('update');
 
     Route::delete('/delete/{posts}', [PostController::class, 'destroy']) ->name('destroy');
 

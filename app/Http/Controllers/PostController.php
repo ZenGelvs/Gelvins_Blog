@@ -18,15 +18,13 @@ class PostController extends Controller
 
     //show index view and contents of posts 
     public function index(){
-        $posts = Post::all();
-        return view ('view', ['posts' => $posts]);
+        $post = Post::all();
+        return view ('view', ['posts' => $post]);
     }
-
-
 
     //edit function that retries data from db
     public function edit(Post $posts){
-        return view('edit', ['posts'=>$posts]);
+        return view('edit', ['post'=>$posts]);
     }
 
     //delete function
