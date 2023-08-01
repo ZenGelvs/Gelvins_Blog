@@ -9,36 +9,29 @@ use App\Http\Requests\User\Posts\StoreRequest;
 class PostController extends Controller
 {
 
-    //Create post and return to addpost view
     public function store(StoreRequest $request){
-        
         $data = $request->validated();
         Post::create($data);
-        return redirect('/Posts./view');
+        return redirect()->back();
     }
 
-    //show index view and contents of posts 
     public function index(){
         $post = Post::all();
         return view ('view', ['post' => $post]);
     }
 
-    //edit function that retries data from db
     public function edit(Post $post){
         return view('edit', ['post'=>$post]);
     }
 
     public function update(Post $post, StoreRequest $request){
         $data = $request->validated();
-
         $post->update($data);
-
-        return view ('posts');
+        return redirect()->route('post.index');
     }
 
     public function destroy(Post $post){
         $post->delete();
-        return redirect('/Posts./view');
-            
+        return redirect()->back();
     }
 }

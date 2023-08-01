@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('/posts');});
 
 //Routegroup
-Route::group(['prefix'=> 'Posts.', 'as' => 'posts.'], function(){
+Route::group(['prefix'=> 'posts', 'as' => 'post.'], function(){
 
     Route::post('/store', [PostController::class, 'store']) ->name('store');
 
@@ -18,6 +18,5 @@ Route::group(['prefix'=> 'Posts.', 'as' => 'posts.'], function(){
 
     Route::put('update{post}', [PostController::class, 'update']) ->name('update');
 
-    Route::delete('delete{post}', [PostController::class, 'destroy']) ->name('destroy');
-
+    Route::delete('/delete{post}', [PostController::class, 'destroy']) ->name('destroy');
 });
