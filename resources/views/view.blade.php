@@ -26,10 +26,10 @@
                     <p class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" style="font-size:20px;">
                         <a href="{{route('posts.edit', $post->id)}}">Edit</a></p>
 
-                    <form action="{{route('posts.destroy', $post->id)}}" method="POST"> 
+                    <form method="DELETE"> 
                     @csrf
                     @method('DELETE')
-                    <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" style="font-size:20px;">Delete</button>
+                    <a href="{{route('posts.destroy', $post->id)}}" class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed" style="font-size:20px;">Delete</a>
                 </form>
 
                 </div>
