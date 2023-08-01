@@ -8,6 +8,12 @@ use App\Http\Requests\User\Posts\StoreRequest;
 
 class PostController extends Controller
 {
+     //Create function
+     public function create(Post $posts){
+     
+        return view('posts');
+        }
+
     //Create post and return to addpost view
     public function store(StoreRequest $request){
         

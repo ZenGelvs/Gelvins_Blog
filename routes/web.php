@@ -26,7 +26,7 @@ Route::group(['prefix'=> 'posts.', 'as' => 'posts.'], function(){
 
     Route::get('view/', [PostController::class, 'index']) ->name('index');
 
-    Route::get('/return', [PostController::class, 'return']) ->name('return');
+    Route::get('/create', [PostController::class, 'create']) ->name('create');
 
     Route::get('edit/{posts}', [PostController::class, 'edit']) ->name('edit');
 
