@@ -1,4 +1,4 @@
-@extends('layout.Index')  
+@extends('layout.index')  
 @section('Content')
 <div> 
     <div>
