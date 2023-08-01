@@ -11,8 +11,8 @@
             <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed">Save</button>
             </form>
 
-            
+         
             <a href="{{route('posts.index')}}" class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> Back </a>
             
 </div> 
-@endsection
+@stop

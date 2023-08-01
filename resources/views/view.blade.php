@@ -1,17 +1,20 @@
-@extends('layout.index')  
+@extends('layout.Index')  
 @section('Content')
 <div> 
-    
     <div>
-        <div>
-            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">My Posts</h2>
-
+        <h1 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Create A new post</h1><br>
+        <form action="{{route('posts.store')}}" method="POST">
+            @csrf
+            <input type="text" name="title" placeholder="Your Title"><br><br>
+            <textarea name="body" rows="8" cols="70" placeholder="Write your post here:"></textarea><br><br>
+            <button class="mt-4 text-gray-500 dark:text-gray-400 c leading-relaxed"> Post </button>
+        </form>
         </div>
 
         <div  style= "padding:10px; margin:10px" > 
             <h1 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white" > All posts  </h1>
 
-            @foreach($posts as $post)
+            @foreach($post as $post)
                 <div style="background-color: #1C3152; padding: 50px; margin-top: 100px; margin 20px 50px 20px 50px; padding: 40px 200px 60px 200px;"     
                 class="dark:text-white" > 
                     <h3 style = "font-size: 60px;">{{$post['Title']}}</h3>
