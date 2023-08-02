@@ -14,9 +14,14 @@ Route::group(['prefix'=> 'posts', 'as' => 'post.'], function(){
 
     Route::get('/view', [PostController::class, 'index']) ->name('index');
 
-    Route::get('edit{post}', [PostController::class, 'edit']) ->name('edit');
+    Route::group(['prefix' => '{post}'], function () {
 
-    Route::put('update{post}', [PostController::class, 'update']) ->name('update');
+        Route::get('edit', [PostController::class, 'edit'])->name('edit');
 
-    Route::delete('/delete{post}', [PostController::class, 'destroy']) ->name('destroy');
+        Route::put('update', [PostController::class, 'update'])->name('update');
+
+        Route::delete('delete', [PostController::class, 'destroy']) ->name('destroy');
+       });
+    
+
 });
