@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\PostResource;
 use App\Http\Requests\User\Posts\StoreRequest;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -14,13 +13,29 @@ class PostController extends Controller
     //Working:
 
     public function index(){
-
+        $post = Post::all();
+        $data=[
+            'status' => 200,
+            'post' => $post,
+        ];
         return PostResource::collection(Post::all());
     }
 
-    public function show(Post $post){
-    
-        return PostResource::male($psot);
+    public function show($id){
+        $post = Post::find($id);
+
+        if($post){
+            return response()->json([
+            'status' => 200,
+            'post' =>  $post
+            ], 200);
+        }else{
+            return response()->json([
+                'status' => 404,
+                'message' =>  'Post not found'
+                ], 404);
+
+        }
     }
 
     public function edit( $id){
