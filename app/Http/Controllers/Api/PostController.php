@@ -4,90 +4,112 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Http\Requests\User\Posts\StoreRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
+use App\Http\Requests\User\Posts\StoreRequest;
 
 class PostController extends Controller
 {
-
     //API ROUTES
-    public function store(StoreRequest $request){
-        $data = $request->validated();
-        Post::create($data);
-        return response()->json([
-            'status' => 200,
-            'message' => "Post added successfully"
-            ], 200);
-    }
-   
-   public function index(){
-        $post = Post::all();
-        $data=[
-            'status' => 200,
-            'post' => $post,
-        ];
-        return response()->json($data, 200);
+    //Working:
+
+    public function index(){
+
+        return PostResource::collection(Post::all());
     }
 
-    public function show($id){
+    public function show(Post $post){
+    
+        return PostResource::male($psot);
+    }
+
+    public function edit( $id){
         $post = Post::find($id);
+
+        if($post){
             return response()->json([
-                'status' => 200,
-                'post' =>  $post
-                ], 200);
-    }
-
-    public function update(StoreRequest $request, int $id){
-        $data = $request->validated();
-        
-        $post = Post::find($id);
-        
-        Post::update($data);
-        return response()->json([
             'status' => 200,
-            'message' => "Post Updated successfully"
+            'post' =>  $post
             ], 200);
+        }else{
+            return response()->json([
+                'status' => 404,
+                'message' =>  'Post not found'
+                ], 404);
+
+        }
     }
 
     public function destroy($id){
         $post=Post::find($id);
         if($post){
             $post->delete();
+            return response()->json([
+                'status' => 200,
+                'message' => "Post Deleted"
+                ], 200);
         }else{
             return response()->json([
                 'status' => 404,
                 'message' => "No Post Found"
-                ], 200);
+                ], 404);
         }
-
     }
+    //Not:
 
-    //VIEW ROUTES
+    public function store(StoreRequest $request){
+        $data = $request -> validated();
 
-     /* public function store(StoreRequest $request){
-        $data = $request->validated();
-        Post::create($data);
-        return redirect()->back();
-    }*/
+        if($data->fails()){
+            return response()->json([
+                'status' => 422,
+                'errors' =>  $validator->messages()
+                ], 422);
+        }else{
+            Post::create($data);
+
+            if($post){
+                return response()-> json([
+                    'status'=>200,
+                    'message'=> 'Post Created Successfully'
+                ], 200);
+            }else{
+            return response()-> json([
+                    'status'=>500,
+                    'message'=> 'Post Not Successful'
+            ], 500);
+            }
+        }
+        
+        }
     
- /*
-    public function index(){
-        $post = Post::all();
-        return view ('view', ['post' => $post]);
-    }*/
+    public function update(StoreRequest $request, int $id){
+        $data = $request -> validated();
 
-    public function edit(Post $post){
-        return view('edit', ['post'=>$post]);
+        if($data->fails()){
+            return response()->json([
+                'status' => 422,
+                'errors' =>  $data->messages()
+                ], 422);
+        }else{
+
+            $post = Post::find($id);
+            if($post){
+
+                $post->update($data);
+                return response()-> json([
+                    'status'=>200,
+                    'message'=> 'Post Updated Successfully'
+                ], 200);
+            }else{
+
+            return response()-> json([
+                    'status'=>404,
+                    'message'=> 'Update Not Successful'
+            ], 404);
+            }
+        }
     }
 
-    /*public function update(Post $post, StoreRequest $request){
-        $data = $request->validated();
-        $post->update($data);
-        return redirect()->route('post.index');
-    }*/
-
-    /*public function destroy(Post $post){
-        $post->delete();
-        return redirect()->back();
-    }*/
+    
 }

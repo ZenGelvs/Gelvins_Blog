@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\PostController;
 |
 */
 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -22,9 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Routegroup
 Route::group(['prefix'=> 'posts', 'as' => 'post.'], function(){
 
-    Route::post('/store', [PostController::class, 'store']) ->name('store');
+    Route::post('store', [PostController::class, 'store']) ->name('store');
 
-    Route::get('/view', [PostController::class, 'index']) ->name('index');
+    Route::get('index', [PostController::class, 'index']) ->name('index');
 
         Route::group(['prefix' => '{post}'], function () {
 
