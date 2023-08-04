@@ -33,7 +33,7 @@ use App\Http\Resources\PostResource;
 
             Route::get('/', [PostController::class, 'show']);
 
-            Route::get('edit', [PostController::class, 'edit'])->name('edit');
+            Route::get('edit', [PostController::class, 'edit']);
 
             Route::put('/', [PostController::class, 'update']);
 
