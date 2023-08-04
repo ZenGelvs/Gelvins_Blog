@@ -10,9 +10,11 @@ use App\Http\Requests\User\Posts\StoreRequest;
 
 class PostController extends Controller
 {
-    //Retrieve all Posts
-    public function index(){
-        return PostResource::collection(Post::all());
+    /*Retrieve all Posts
+    */
+    public function index(Post $post){
+        $post = Post::query()->paginate(5);
+        return PostResource::collection($post);
     }
 
     //Store Post
