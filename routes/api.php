@@ -25,18 +25,18 @@ use App\Http\Resources\PostResource;
     //Routegroup
     Route::group(['prefix'=> 'posts', 'as' => 'post.'], function(){
 
-        Route::post('store', [PostController::class, 'store']);
+        Route::post('/', [PostController::class, 'store']);
 
-        Route::get('index', [PostController::class, 'index']);
+        Route::get('/', [PostController::class, 'index']);
 
         Route::group(['prefix' => '{post}'], function () {
 
-            Route::get('show', [PostController::class, 'show']);
+            Route::get('/', [PostController::class, 'show']);
 
             Route::get('edit', [PostController::class, 'edit'])->name('edit');
 
-            Route::put('update', [PostController::class, 'update']);
+            Route::put('/', [PostController::class, 'update']);
 
-            Route::delete('delete', [PostController::class, 'destroy']);
+            Route::delete('/', [PostController::class, 'destroy']);
          });
     });

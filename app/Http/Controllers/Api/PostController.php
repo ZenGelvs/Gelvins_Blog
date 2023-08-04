@@ -19,62 +19,32 @@ class PostController extends Controller
     public function store(StoreRequest $request){
         $data = $request->validated();
         $post = Post::create($data);
-        if($post){
-            return PostResource::make($post);
-        }else{
-            return response()-> json([
-                    'message'=> 'Post Not Successful'
-            ]);
-         }
+        return PostResource::make($post);
      }
 
     //Retrieve Specific Post
     public function edit(Post $post){
-        if($post){
-            return PostResource::make($post);
-        }else{
-            return response()->json([
-                'message' =>  'Post not found'
-            ]);
-        }
+        return PostResource::make($post);
     }
 
     //Retrieve Specific Post
     public function show(Post $post){
-        if($post){
-            return PostResource::make($post);
-        }else{
-            return response()->json([
-                'message' =>  'Post not found'
-            ]);
-        }
+        return PostResource::make($post);
     }
 
     //Delete Post
     public function destroy(Post $post){
-        if($post){
-            $post->delete();
-            return response()->json([
-                'message' => "Post Deleted"
-            ]);
-        }else{
-            return response()->json([
-                'message' => "No Post Found"
-            ]);
-        }
+        $post->delete();
+        return response()->json([
+            'message' => "Post Deleted"
+        ]);
     }
 
     //Update Post
     public function update(StoreRequest $request, Post $post){
         $data = $request->validated();
-        if($post){
-            $post->update($data);
-            return PostResource::make($post);
-        }else{
-            return response()-> json([
-                   'message'=> 'Update Not Successful'
-            ]);
-        }
+        $post->update($data);
+        return PostResource::make($post);
     }
     
 }
