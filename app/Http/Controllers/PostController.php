@@ -6,15 +6,15 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\Posts\StoreRequest;
 
+
 class PostController extends Controller
 {
-
-    public function store(StoreRequest $request){
+    public function store (StoreRequest $request){
         $data = $request->validated();
         Post::create($data);
-        return redirect()->back();
+        return redirect() ->back();
     }
-
+    
     public function index(){
         $post = Post::all();
         return view ('view', ['post' => $post]);
