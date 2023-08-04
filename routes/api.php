@@ -18,25 +18,25 @@ use App\Http\Resources\PostResource;
 */
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+    });
 
-//Routegroup
-Route::group(['prefix'=> 'posts', 'as' => 'post.'], function(){
+    //Routegroup
+    Route::group(['prefix'=> 'posts', 'as' => 'post.'], function(){
 
-    Route::post('store', [PostController::class, 'store']) ->name('store');
+        Route::post('store', [PostController::class, 'store']);
 
-    Route::get('index', [PostController::class, 'index']) ->name('index');
+        Route::get('index', [PostController::class, 'index']);
 
         Route::group(['prefix' => '{post}'], function () {
 
-            Route::get('show', [PostController::class, 'show'])->name('show');
+            Route::get('show', [PostController::class, 'show']);
 
             Route::get('edit', [PostController::class, 'edit'])->name('edit');
 
-            Route::put('update', [PostController::class, 'update'])->name('update');
+            Route::put('update', [PostController::class, 'update']);
 
-            Route::delete('delete', [PostController::class, 'destroy']) ->name('destroy');
+            Route::delete('delete', [PostController::class, 'destroy']);
          });
-});
+    });

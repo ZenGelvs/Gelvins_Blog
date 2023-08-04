@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\Posts\StoreRequest;
-use App\Http\Controllers\Controller;
+
 
 class PostController extends Controller
 {
     public function store (StoreRequest $request){
-        $data = $request -> validated();
+        $data = $request->validated();
         Post::create($data);
         return redirect() ->back();
     }
