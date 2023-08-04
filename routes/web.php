@@ -9,16 +9,16 @@ use App\Http\Controllers\PostController;
 
     Route::group(['prefix'=> 'posts', 'as' => 'post.'], function(){
 
-        Route::post('/store', [PostController::class, 'store'])->name('store');
+        Route::post('/', [PostController::class, 'store'])->name('store');
     
-        Route::get('/view', [PostController::class, 'index'])->name('index');
+        Route::get('/', [PostController::class, 'index'])->name('index');
     
         Route::group(['prefix' => '{post}'], function () {
     
             Route::get('edit', [PostController::class, 'edit'])->name('edit');
     
-            Route::put('update', [PostController::class, 'update'])->name('update');
+            Route::put('/', [PostController::class, 'update'])->name('update');
     
-            Route::delete('delete', [PostController::class, 'destroy'])->name('destroy');
+            Route::delete('/', [PostController::class, 'destroy'])->name('destroy');
         });
     });
