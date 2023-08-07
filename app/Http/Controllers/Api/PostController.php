@@ -12,8 +12,8 @@ class PostController extends Controller
     /**
      * Retrieve a paginated collection of Post resources.
      *
-     * @param  Post  $post The instance of the Post model.
-     * @return PostResource::collection
+     * @param  App\Models\Post  $post The instance of the Post model.
+     * @return App\Http\Resources\PostResource
      */
     public function index(Post $post)
     {
@@ -25,44 +25,44 @@ class PostController extends Controller
     /**
      * Store a new Post resource.
      *
-     * @param  StoreRequest  $request Instance of the StoreRequest class for validation
-     * @return PostResource::make
+     * @param  App\Http\Requests\User\Posts\StoreRequest  $request Instance of the StoreRequest class for validation
+     * @return App\Http\Resources\PostResource
      */
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
         $post = Post::create($data);
 
-        return PostResource::make($post);
+        return new PostResource($post);
     }
 
     /**
      * Edit a Post resource
      *
-     * @param  Post  $post The instance of the Post model.
-     * @return PostResource::make
+     * @param  App\Models\Post  $post The instance of the Post model.
+     * @return App\Http\Resources\PostResource
      */
     public function edit(Post $post)
     {
-        return PostResource::make($post);
+        return new PostResource($post);
     }
 
     /**
      * Show a post resource
      *
-     * @param  Post  $post The instance of the Post model.
-     * @return PostResource::make
+     * @param  App\Models\Post  $post The instance of the Post model.
+     * @return App\Http\Resources\PostResource
      */
     public function show(Post $post)
     {
-        return PostResource::make($post);
+        return new PostResource($post);
     }
 
     /**
      * Destroy a post resource
      *
-     * @param  Post  $post The instance of the Post model.
-     * @return JSON response.
+     * @param  \App\Models\Post  $post The instance of the Post model.
+     * @return \Illuminate\Http\Response JSON response.
      */
     public function destroy(Post $post)
     {
@@ -76,9 +76,9 @@ class PostController extends Controller
     /**
      * Update a post resource
      *
-     * @param  StoreRequest  $request Instance of the StoreRequest class for validation
-     * @param  Post  $post The instance of the Post model.
-     * @return PostResource::make
+     * @param  App\Http\Requests\User\Posts\StoreRequest  $request Instance of the StoreRequest class for validation
+     * @param  App\Models\Post  $post The instance of the Post model.
+     * @return App\Http\Resources\PostResource
      */
     public function update(StoreRequest $request, Post $post)
     {

@@ -10,8 +10,8 @@ class PostController extends Controller
     /**
      * store
      *
-     * @param  StoreRequest  $request Instance of the StoreRequest class for validation
-     * @return redirect response back to the previous page.
+     * @param  App\Http\Requests\User\Posts\StoreRequest  $request Instance of the StoreRequest class for validation
+     * @return Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
@@ -24,7 +24,7 @@ class PostController extends Controller
     /**
      * Retrieve a collection of Post resources.
      *
-     * @return view views.blade containing the list of posts
+     * @return Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -36,8 +36,8 @@ class PostController extends Controller
     /**
      * Redirect to edit post screen
      *
-     * @param  Post  $post The instance of the Post model.
-     * @return view edit.blade containing the specific posts
+     * @param  App\Models\Post  $post The instance of the Post model.
+     * @return Illuminate\Contracts\View\View
      */
     public function edit(Post $post)
     {
@@ -47,9 +47,9 @@ class PostController extends Controller
     /**
      * Update post resource
      *
-     * @param  Post  $post The instance of the Post model.
-     * @param  StoreRequest  $request Instance of the StoreRequest class for validation
-     * @return redirect response to post.index.
+     * @param  App\Models\Post  $post The instance of the Post model.
+     * @param  App\Http\Requests\User\Posts\StoreRequest  $request Instance of the StoreRequest class for validation
+     * @return Illuminate\Http\Response
      */
     public function update(Post $post, StoreRequest $request)
     {
@@ -62,8 +62,8 @@ class PostController extends Controller
     /**
      * Destroy post resource
      *
-     * @param  Post  $post The instance of the Post model.
-     * @return redirect response back to the previous page.
+     * @param  Post  App\Models\Post  $post The instance of the Post model.
+     * @return Illuminate\Http\Response
      */
     public function destroy(Post $post)
     {
