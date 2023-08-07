@@ -42,10 +42,10 @@ class Handler extends ExceptionHandler
                 }
 
                 $response_json = [
-                    'message' => "{$status} {$exception->getMessage()}"
+                    'message' => "{$status} {$exception->getMessage()}",
                 ];
 
-                if (!app()->environment('production')) {
+                if (! app()->environment('production')) {
                     $response_json['stacktrace'] = $exception->getTraceAsString();
                 }
 
