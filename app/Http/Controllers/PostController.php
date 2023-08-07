@@ -10,8 +10,8 @@ class PostController extends Controller
     /**
      * store
      *
-     * @param  mixed  $request Instance of the StoreRequest class for validation
-     * @return void
+     * @param  StoreRequest  $request Instance of the StoreRequest class for validation
+     * @return redirect response back to the previous page.
      */
     public function store(StoreRequest $request)
     {
@@ -22,9 +22,9 @@ class PostController extends Controller
     }
 
     /**
-     * index
+     * Retrieve a collection of Post resources.
      *
-     * @return void
+     * @return view views.blade containing the list of posts
      */
     public function index()
     {
@@ -34,10 +34,10 @@ class PostController extends Controller
     }
 
     /**
-     * edit
+     * Redirect to edit post screen
      *
-     * @param  mixed  $post Injection of Post.php model
-     * @return void
+     * @param  Post  $post The instance of the Post model.
+     * @return view edit.blade containing the specific posts
      */
     public function edit(Post $post)
     {
@@ -45,11 +45,11 @@ class PostController extends Controller
     }
 
     /**
-     * update
+     * Update post resource
      *
-     * @param  mixed  $post Injection of Post.php model
-     * @param  mixed  $request Instance of the StoreRequest class for validation
-     * @return void
+     * @param  Post  $post The instance of the Post model.
+     * @param  StoreRequest  $request Instance of the StoreRequest class for validation
+     * @return redirect response to post.index.
      */
     public function update(Post $post, StoreRequest $request)
     {
@@ -60,10 +60,10 @@ class PostController extends Controller
     }
 
     /**
-     * destroy
+     * Destroy post resource
      *
-     * @param  mixed  $post Injection of Post.php model
-     * @return void
+     * @param  Post  $post The instance of the Post model.
+     * @return redirect response back to the previous page.
      */
     public function destroy(Post $post)
     {

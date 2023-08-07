@@ -10,10 +10,10 @@ use App\Models\Post;
 class PostController extends Controller
 {
     /**
-     * index
+     * Retrieve a paginated collection of Post resources.
      *
-     * @param  mixed  $post Injection of Post.php model
-     * @return void
+     * @param  Post  $post The instance of the Post model.
+     * @return PostResource::collection
      */
     public function index(Post $post)
     {
@@ -23,10 +23,10 @@ class PostController extends Controller
     }
 
     /**
-     * store
+     * Store a new Post resource.
      *
-     * @param  mixed  $request Instance of the StoreRequest class for validation
-     * @return void
+     * @param  StoreRequest  $request Instance of the StoreRequest class for validation
+     * @return PostResource::make
      */
     public function store(StoreRequest $request)
     {
@@ -37,10 +37,10 @@ class PostController extends Controller
     }
 
     /**
-     * edit
+     * Edit a Post resource
      *
-     * @param  mixed  $post Injection of Post.php model
-     * @return void
+     * @param  Post  $post The instance of the Post model.
+     * @return PostResource::make
      */
     public function edit(Post $post)
     {
@@ -48,10 +48,10 @@ class PostController extends Controller
     }
 
     /**
-     * show
+     * Show a post resource
      *
-     * @param  mixed  $post Injection of Post.php model
-     * @return void
+     * @param  Post  $post The instance of the Post model.
+     * @return PostResource::make
      */
     public function show(Post $post)
     {
@@ -59,10 +59,10 @@ class PostController extends Controller
     }
 
     /**
-     * destroy
+     * Destroy a post resource
      *
-     * @param  mixed  $post Injection of Post.php model
-     * @return void
+     * @param  Post  $post The instance of the Post model.
+     * @return JSON response.
      */
     public function destroy(Post $post)
     {
@@ -74,11 +74,11 @@ class PostController extends Controller
     }
 
     /**
-     * update
+     * Update a post resource
      *
-     * @param  mixed  $request Instance of the StoreRequest class for validation
-     * @param  mixed  $post Injection of Post.php model
-     * @return void
+     * @param  StoreRequest  $request Instance of the StoreRequest class for validation
+     * @param  Post  $post The instance of the Post model.
+     * @return PostResource::make
      */
     public function update(StoreRequest $request, Post $post)
     {
