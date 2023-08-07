@@ -12,7 +12,7 @@ class PostController extends Controller
     /**
      * index
      *
-     * @param  mixed  $post
+     * @param  mixed  $post Injection of Post.php model
      * @return void
      */
     public function index(Post $post)
@@ -25,7 +25,7 @@ class PostController extends Controller
     /**
      * store
      *
-     * @param  mixed  $request
+     * @param  mixed  $request Instance of the StoreRequest class for validation
      * @return void
      */
     public function store(StoreRequest $request)
@@ -39,7 +39,7 @@ class PostController extends Controller
     /**
      * edit
      *
-     * @param  mixed  $post
+     * @param  mixed  $post Injection of Post.php model
      * @return void
      */
     public function edit(Post $post)
@@ -50,7 +50,7 @@ class PostController extends Controller
     /**
      * show
      *
-     * @param  mixed  $post
+     * @param  mixed  $post Injection of Post.php model
      * @return void
      */
     public function show(Post $post)
@@ -61,7 +61,7 @@ class PostController extends Controller
     /**
      * destroy
      *
-     * @param  mixed  $post
+     * @param  mixed  $post Injection of Post.php model
      * @return void
      */
     public function destroy(Post $post)
@@ -76,8 +76,8 @@ class PostController extends Controller
     /**
      * update
      *
-     * @param  mixed  $request
-     * @param  mixed  $post
+     * @param  mixed  $request Instance of the StoreRequest class for validation
+     * @param  mixed  $post Injection of Post.php model
      * @return void
      */
     public function update(StoreRequest $request, Post $post)
